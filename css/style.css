@@ -2,21 +2,12 @@
     --main-font-family: 'Inter', sans-serif;
     --background-color: #FFFFFF;
     --card-background: #eaeaea;
+    --footer-background: #b5b5b7;
     --text-color: #1A1A1A;
     --title-color: #000000;
-    --accent-color: #2A2524;
-    --subtle-color: #8C8C8C;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background-color: #121212;
-        --card-background: #222222;
-        --text-color: #EEEEEE;
-        --title-color: #FFFFFF;
-        --accent-color: #FFFFFF;
-        --subtle-color: #AAAAAA;
-    }
+    --accent-color: #2a2524;
+    --subtle-color: #555555;
+    --input-border: #CCCCCC;
 }
 
 *,
@@ -43,35 +34,40 @@ body {
     padding-right: 20px;
 }
 
-/* Шапка */
+/* ============================
+   ШАПКА (ПО СКРИНШОТУ МАКЕТА)
+   Слева: ссылки навигации
+   В середине: телефон и почта
+   Справа: иконка Z
+   ============================ */
 header {
-    border-bottom: 1px solid #EEEEEE;
     background-color: var(--background-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .header__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 80px;
+    min-height: 72px;
 }
 
-.header__logo svg {
-    display: block;
-}
-
+/* Слева: навигация */
 .header__nav ul {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 40px;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav__link {
     color: var(--text-color);
     text-decoration: none;
     font-size: 15px;
-    padding: 10px 4px;
+    font-weight: 500;
+    padding: 8px 4px;
     transition: color 0.2s ease;
 }
 
@@ -81,10 +77,11 @@ header {
     color: #FF7931;
 }
 
+/* В середине: контакты */
 .header__contacts {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 48px;
 }
 
 .header__phone,
@@ -92,7 +89,8 @@ header {
     color: var(--text-color);
     text-decoration: none;
     font-size: 14px;
-    padding: 8px 4px;
+    font-weight: 400;
+    padding: 6px 0;
     transition: color 0.2s ease;
 }
 
@@ -105,6 +103,33 @@ header {
     color: #FF7931;
 }
 
+/* Справа: логотип Z */
+.header__logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header__logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.header__logo-img {
+    display: block;
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+}
+
+.header__logo:hover,
+.header__logo:focus {
+    opacity: 0.8;
+}
+
 .header__burger {
     display: none;
     min-width: 44px;
@@ -112,51 +137,68 @@ header {
     padding: 10px;
     background: none;
     border: none;
+    color: var(--title-color);
     cursor: pointer;
 }
 
-/* Баннер */
+/* ============================
+   БАННЕР (ПО СКРИНШОТУ МАКЕТА)
+   ============================ */
 .banner {
-    padding: 60px 0;
+    background-color: #b7b7b9;
+    padding: 0;
+    overflow: hidden;
 }
 
 .banner__container {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    gap: 40px;
+    gap: 30px;
+    min-height: 520px;
 }
 
 .banner__info {
-    max-width: 620px;
+    max-width: 560px;
+    padding-bottom: 54px;
+    padding-top: 40px;
 }
 
 .banner__title {
-    font-size: 54px;
+    font-size: 42px;
     font-weight: 500;
-    line-height: 1.15;
+    line-height: 1.2;
     color: var(--title-color);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
 }
 
 .banner__desc {
-    font-size: 18px;
-    color: var(--subtle-color);
+    font-size: 16px;
+    color: #4a4a4a;
+    line-height: 1.4;
 }
 
 .banner__media {
     flex-shrink: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 .banner__img {
-    max-width: 500px;
-    width: 100%;
+    display: block;
+    max-height: 520px;
+    max-width: 640px;
+    width: auto;
     height: auto;
-    object-fit: cover;
-    border-radius: 4px;
+    object-fit: contain;
+    border-radius: 0;
 }
 
-/* Секция Каталог (Задание 2 и 3) */
+/* ============================
+   КАТАЛОГ (Задания 2 и 3)
+   ============================ */
 .catalog {
     padding: 50px 0 30px;
 }
@@ -239,7 +281,9 @@ header {
     color: var(--text-color);
 }
 
-/* Секция Галерея (Задание 4) */
+/* ============================
+   ГАЛЕРЕЯ (Задание 4)
+   ============================ */
 .gallery {
     padding: 40px 0 80px;
 }
@@ -281,110 +325,306 @@ header {
 .gallery__img--8 { grid-area: img8; }
 .gallery__img--9 { grid-area: img9; }
 
-/* Подвал */
+/* ============================
+   ПОДВАЛ (ПО СКРИНШОТУ МАКЕТА)
+   ============================ */
 footer {
-    border-top: 1px solid #EEEEEE;
-    padding: 50px 0 30px;
-    background-color: var(--background-color);
+    background-color: var(--footer-background);
+    padding: 48px 0 28px;
+    color: var(--text-color);
 }
 
 .footer__container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Верхний ряд колонок */
+.footer__top {
     display: grid;
-    grid-template-columns: 2fr 1.5fr 2fr;
-    gap: 40px;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 20px;
+    align-items: start;
+    padding-bottom: 36px;
+}
+
+/* Левая колонка */
+.footer__col--brand {
+    grid-column: 1 / 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
 }
 
 .footer__logo {
-    margin-bottom: 20px;
+    display: inline-block;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
 }
 
-.footer__col p {
-    margin-bottom: 12px;
-    font-size: 14px;
+.footer__logo-img {
+    display: block;
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
 }
 
-.footer__col h4 {
+.footer__logo:hover,
+.footer__logo:focus {
+    opacity: 0.8;
+}
+
+.footer__phone {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer__phone:hover,
+.footer__phone:focus {
+    color: #FF7931;
+}
+
+.footer__sublogo {
+    display: inline-block;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footer__sublogo-img {
+    display: block;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.footer__sublogo:hover,
+.footer__sublogo:focus {
+    opacity: 0.8;
+}
+
+/* Средняя колонка */
+.footer__col--links {
+    grid-column: 5 / 9;
+}
+
+.footer__heading {
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     color: var(--title-color);
 }
 
-.footer__col ul {
+.footer__nav-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+}
+
+.footer__nav-grid ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
+    padding: 0;
+    margin: 0;
 }
 
 .footer__link {
     color: var(--text-color);
     text-decoration: none;
-    font-size: 14px;
-    display: inline-block;
-    padding: 6px 0;
+    font-size: 15px;
+    font-weight: 400;
     transition: color 0.2s ease;
 }
 
 .footer__link:hover,
-.footer__link:focus,
-.footer__link:active {
+.footer__link:focus {
     color: #FF7931;
+}
+
+/* Правая колонка */
+.footer__col--subscribe {
+    grid-column: 9 / 13;
 }
 
 .subscribe__form {
     display: flex;
-    margin-bottom: 20px;
+    align-items: stretch;
+    width: 100%;
 }
 
 .subscribe__input {
     flex-grow: 1;
-    min-height: 44px;
-    padding: 10px 14px;
-    border: 1px solid #CCCCCC;
+    min-height: 48px;
+    padding: 12px 18px;
+    border: 1px solid var(--input-border);
     border-right: none;
     font-family: var(--main-font-family);
     font-size: 14px;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: #FFFFFF;
+    color: #000000;
+    outline: none;
+    border-radius: 2px 0 0 2px;
+}
+
+.subscribe__input::placeholder {
+    color: #888888;
 }
 
 .subscribe__btn {
-    min-width: 44px;
-    min-height: 44px;
+    min-width: 52px;
+    min-height: 48px;
     background-color: var(--accent-color);
-    color: var(--background-color);
+    color: #FFFFFF;
     border: 1px solid var(--accent-color);
+    border-radius: 0 2px 2px 0;
     cursor: pointer;
-    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: opacity 0.2s ease;
 }
 
 .subscribe__btn:hover,
-.subscribe__btn:focus,
-.subscribe__btn:active {
-    opacity: 0.8;
+.subscribe__btn:focus {
+    opacity: 0.85;
+}
+
+/* Разделительная линия */
+.footer__divider {
+    border: none;
+    border-top: 1px solid #999899;
+    margin: 0 0 24px 0;
+    width: 100%;
+}
+
+/* Нижний ряд (под разделителем) */
+.footer__bottom {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 20px;
+    align-items: center;
+}
+
+.footer__contacts-bottom {
+    grid-column: 1 / 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.footer__email {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    transition: color 0.2s ease;
+}
+
+.footer__email:hover,
+.footer__email:focus {
+    color: #FF7931;
+}
+
+.footer__socials {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.social__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social__link svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.social__link svg rect,
+.social__link svg circle {
+    fill: #2a2524;
+}
+
+.social__link svg path {
+    fill: var(--footer-background);
+}
+
+.social__link:hover,
+.social__link:focus {
+    opacity: 0.75;
+    transform: translateY(-2px);
+}
+
+.footer__product-of {
+    grid-column: 5 / 9;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--title-color);
+}
+
+.footer__product-of-img {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.footer__copyright {
+    grid-column: 9 / 13;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .copyright {
-    font-size: 12px;
-    color: var(--subtle-color);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--title-color);
 }
 
-/* Медиа-запросы адаптива */
+/* ============================
+   АДАПТИВНОСТЬ
+   ============================ */
 @media (max-width: 1024px) {
+    .header__nav ul {
+        gap: 24px;
+    }
+
+    .header__contacts {
+        gap: 24px;
+    }
+
     .catalog__container {
         grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
         column-gap: 4vw;
         gap: 0 4vw;
     }
 
+    .banner__container {
+        min-height: 420px;
+    }
+
     .banner__title {
-        font-size: 40px;
+        font-size: 34px;
     }
 
     .banner__img {
-        max-width: 360px;
+        max-height: 420px;
+        max-width: 480px;
     }
 }
 
@@ -398,10 +638,31 @@ footer {
         display: block;
     }
 
+    .banner {
+        padding: 40px 0 0;
+    }
+
     .banner__container {
         flex-direction: column-reverse;
         align-items: flex-start;
-        gap: 30px;
+        min-height: auto;
+        gap: 20px;
+    }
+
+    .banner__info {
+        padding-bottom: 40px;
+        padding-top: 0;
+    }
+
+    .banner__media {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .banner__img {
+        max-height: 320px;
+        width: 100%;
+        object-fit: contain;
     }
 
     .banner__img {
@@ -440,8 +701,30 @@ footer {
             "img4 img4 img4 img4 img9 img9";
     }
 
-    .footer__container {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    /* Адаптив подвала */
+    .footer__top {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .footer__col--subscribe {
+        order: 1;
+        width: 100%;
+    }
+
+    .footer__col--brand {
+        order: 2;
+    }
+
+    .footer__col--links {
+        order: 3;
+    }
+
+    .footer__bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
     }
 }
